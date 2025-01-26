@@ -7,10 +7,7 @@ fn main() -> io::Result<()> {
     
     match args.len() {
         // uses args[1] because args[0] is the program name itself
-        // for example: ./loxry script.lox
-        // 
-        // a reason for calling a `&` to args[1] is that we 
-        // transform String to &str 
+        // for example: ["./loxry", "script.lox"]
         2 => run_file(&args[1])?,
         1 => run_prompt()?,
         _ => {
