@@ -1,8 +1,8 @@
 use std::env;
-use std::io;
+use loxry::LoxError;
 use loxry::{run_file, run_prompt};
 
-fn main() -> io::Result<()> {
+fn main() -> Result<(), LoxError> {
     let args: Vec<String> = env::args().collect();
     
     match args.len() {

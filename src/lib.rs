@@ -1,6 +1,5 @@
 use std::fs;
 use std::io::{self, BufRead, Write};
-use std::path::Display;
 
 #[derive(Debug)]
 pub enum LoxError {
@@ -25,7 +24,7 @@ pub fn run_file(path: &str) -> Result<(), LoxError> {
 /// interactive prompt logic
 /// REPL -> Read a line of input, Evaluate it,
 /// Print the result, then loop and do it all over again
-pub fn run_prompt() -> io::Result<()> {
+pub fn run_prompt() -> Result<(), LoxError> {
     let stdin = io::stdin();
 
     loop {
@@ -53,7 +52,7 @@ pub fn run_prompt() -> io::Result<()> {
     Ok(())
 }
 
-fn run(source: &str) -> io::Result<()> {
+fn run(source: &str) -> Result<(), LoxError> {
     let scanner = Scanner::new(source);
     let tokens = scanner.scan_tokens()?;
     
@@ -77,7 +76,7 @@ impl Scanner {
     }
     
     fn scan_tokens(&self) -> Result<Vec<Token>, LoxError> {
-        // scanning implementatio...
+        // scanning implementation...
         // returns Result instead of using global error state
         todo!("Implement token scanning")
     }
